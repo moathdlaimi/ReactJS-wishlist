@@ -15,6 +15,16 @@ if(getenv('DATABASE_URL')){
         "dbname=".$dbname
     );
 } else {
-    $dbconn = pg_connect("host=localhost dbname=");
+    $dbconn = pg_connect("host=localhost dbname=wishlist");
 
+    class Gift {
+      public $id;
+      public $wisher;
+      public $item;
+      public $image;
+      public $des;
+      public $link;
+
+      public function __construct($id, $wisher, $item, $image, $des, $)
+    }
  ?>
