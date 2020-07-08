@@ -14,7 +14,8 @@ if(getenv('DATABASE_URL')){
         "port=".$port." ".
         "dbname=".$dbname
     );
-} else {
+}
+else {
     $dbconn = pg_connect("host=localhost dbname=wishlist");
 }
     class Gift {
