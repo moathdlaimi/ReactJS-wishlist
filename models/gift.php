@@ -75,5 +75,14 @@ if(getenv('DATABASE_URL')){
         $result = pg_query_params($query, $query_params);
         return self::all()
       }
+      //
+      // DELETE
+      //
+      static function delete($id){
+        $query = "DELETE FROM gifts WHERE id = $1";
+        $query_params = array($id);
+        $result = pg_query_params($query, $query_params);
+        return self::all();
+      }
     }
  ?>
