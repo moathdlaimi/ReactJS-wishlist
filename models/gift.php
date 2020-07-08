@@ -6,17 +6,16 @@ if(getenv('DATABASE_URL')){
     $user = $connectionConfig['user'];
     $password = $connectionConfig['pass'];
     $port = $connectionConfig['port'];
-    $dbname = ltrim($connectionConfig['path'],'/');
+    $dbname = trim($connectionConfig['path'],'/');
     $dbconn = pg_connect(
         "host=".$host." ".
-        "dbname=".$dbname." ".
         "user=".$user." ".
+        "password=".$password." ".
         "port=".$port." ".
-        "password=".$password
-
-
+        "dbname=".$dbname
     );
-} else {
+}
+else {
     $dbconn = pg_connect("host=localhost dbname=wishlist");
 }
     class Gift {
