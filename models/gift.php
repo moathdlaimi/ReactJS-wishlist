@@ -44,7 +44,7 @@ if(getenv('DATABASE_URL')){
         $row_object = pg_fetch_object($results);
         while($row_object){
           $new_gift = new Gift(
-            interval($row_object->id);
+            intval($row_object->id);
             $row_object->wisher,
             $row_object->item,
             $row_object->image,
@@ -55,6 +55,9 @@ if(getenv('DATABASE_URL')){
           $row_object = pg_fetch_object($results);
         }
         return $gifts;
+      }
+      static function create($post){
+        $query = ""
       }
     }
  ?>
