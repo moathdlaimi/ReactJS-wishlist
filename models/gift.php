@@ -25,6 +25,13 @@ if(getenv('DATABASE_URL')){
       public $des;
       public $link;
 
-      public function __construct($id, $wisher, $item, $image, $des, $)
+      public function __construct($id, $wisher, $item, $image, $des, $link) {
+        $this->id = $id;
+        $this->wishe = $id;
+        $this->id = $id;
+        $this->id = $id;
+        $this->id = $id;
+        $this->id = $id;
+      }
     }
  ?>
