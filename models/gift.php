@@ -56,8 +56,12 @@ if(getenv('DATABASE_URL')){
         }
         return $gifts;
       }
-      static function create($post){
-        $query = ""
+      static function create($gift){
+        $query = "INSERT INTO gifts (wisher, item, image, des, link) VALUES ($1, $2, $3, $4, $5)";
+        $query_params = array($gift->wisher, $gift->item, $gift->image, $gift->des, $gift->link);
+        pg_query_params($query, $query_params);
+        return self::all()
       }
+
     }
  ?>
