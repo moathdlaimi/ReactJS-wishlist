@@ -1,3 +1,4 @@
+<?php
 $dbconn = null;
 if(getenv('DATABASE_URL')){
     $connectionConfig = parse_url(getenv('DATABASE_URL'));
@@ -15,3 +16,5 @@ if(getenv('DATABASE_URL')){
     );
 } else {
     $dbconn = pg_connect("host=localhost dbname=");
+
+ ?>
