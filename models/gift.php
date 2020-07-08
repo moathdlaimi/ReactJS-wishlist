@@ -6,13 +6,15 @@ if(getenv('DATABASE_URL')){
     $user = $connectionConfig['user'];
     $password = $connectionConfig['pass'];
     $port = $connectionConfig['port'];
-    $connectionConfig['path'] = ltrim($connectionConfig['path'],'/');
+    $dbname = ltrim($connectionConfig['path'],'/');
     $dbconn = pg_connect(
         "host=".$host." ".
+        "dbname=".$dbname." ".
         "user=".$user." ".
-        "password=".$password." ".
         "port=".$port." ".
-        "dbname=".$dbname
+        "password=".$password
+
+
     );
 } else {
     $dbconn = pg_connect("host=localhost dbname=wishlist");
