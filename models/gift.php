@@ -6,7 +6,7 @@ if(getenv('DATABASE_URL')){
     $user = $connectionConfig['user'];
     $password = $connectionConfig['pass'];
     $port = $connectionConfig['port'];
-    $dbname = trim($connectionConfig['path'],'/');
+    $dbname = ltrim($connectionConfig['path'],'/');
     $dbconn = pg_connect(
         "host=".$host." ".
         "user=".$user." ".
