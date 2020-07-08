@@ -27,11 +27,34 @@ if(getenv('DATABASE_URL')){
 
       public function __construct($id, $wisher, $item, $image, $des, $link) {
         $this->id = $id;
-        $this->wishe = $id;
-        $this->id = $id;
-        $this->id = $id;
-        $this->id = $id;
-        $this->id = $id;
+        $this->wisher = $wisher;
+        $this->item = $item;
+        $this->image = $image;
+        $this->des = $des;
+        $this->link = $link;
+      }
+    }
+
+    class Gifts {
+      static function all(){
+        $gifts = array();
+
+        $results = pg_query("SELECT * FROM gifts");
+
+        $row_object = pg_fetch_object($results);
+        while($row_object){
+          $new_gift = new Gift(
+            interval($row_object->id);
+            $row_object->wisher,
+            $row_object->item,
+            $row_object->image,
+            $row_object->des,
+            $row_object->link
+          );
+          $gifts[] = $new_gift;
+          $row_object = pg_fetch_object($results);
+        }
+        return $gifts;
       }
     }
  ?>
