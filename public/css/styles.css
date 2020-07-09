@@ -18,9 +18,9 @@ html{
   position: fixed;
   top: 0;
   width: 100%;
-  background: #2a3b2f;
+  background: black;
   height: 5vh;
-  z-index: 1;
+
 }
 
 .nav-btns{
@@ -35,11 +35,11 @@ html{
   transition: ease .5s;
 }
 .nav-btns:hover{
-  background: #678770;
+  background: gray;
   transition: ease .5s;
 }
 
-.welcome {
+/* .welcome {
   padding-top: 40vh;
   min-height: 100vh;
   display: flex;
@@ -48,4 +48,67 @@ html{
   background-image: url('bg1.jpg');
   background: #bfcbb8;
   color: white;
+} */
+
+.container{
+  text-align: center;
+  margin: 0 auto;
+}
+.create-form{
+  padding-top: 30vh;
+}
+
+.show-page{
+  padding-top: 20vh;
+  width: 60%;
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  grid-template-rows: 50px auto 150px auto ;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.gift-img{
+  grid-column-start: 2;
+  width: 20vh;
+  max-width: 200px;
+  transition: ease 1s;
+}
+.gift-img:hover{
+  transform: scale(1.8);
+  transition: ease 1s;
+}
+
+.func-btns{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+}
+
+.btns{
+  width: 35%;
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  border-left: 1px solid gray;
+  box-shadow: 0 2px 2px gray;
+  font-size: 1.2em;
+  transition: ease .5s;
+}
+.btns:hover{
+  color:#DAA520;
+  background-color: black;
+  transition: ease .5s;
+}
+
+.details{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+}
+
+#wisher-name{
+  color: #DAA520;
 }
