@@ -50,7 +50,7 @@ else {
             $row_object->item,
             $row_object->image,
             $row_object->des,
-            $row_object->link
+            $row_object->link,
           );
           $gifts[] = $new_gift;
           $row_object = pg_fetch_object($results);
@@ -71,8 +71,8 @@ else {
       // UPDATE
       //
       static function update($updated_gift){
-        $query = "UPDATE gifts SET wisher = $1, item = $2, image = $3, des = $4, link = $5";
-        $query_params = array($updated_gift->wisher, $updated_gift->item, $updated_gift->image, $updated_gift->des, $updated_gift->link);
+        $query = "UPDATE gifts SET wisher = $1, item = $2, image = $3, des = $4, link = $5 WHERE id = $6";
+        $query_params = array($updated_gift->wisher, $updated_gift->item, $updated_gift->image, $updated_gift->des, $updated_gift->link, $updated_gift->id);
         $result = pg_query_params($query, $query_params);
         return self::all();
       }
