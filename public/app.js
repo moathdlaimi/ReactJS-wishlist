@@ -10,12 +10,14 @@ class Gift extends React.Component{
   }
 
   render = () => {
-    const {gift, deleteGift} = this.props;
+    const {gift, deleteGift,updateGift, updateWisher,updateItem,updateImgURL,updateDes,updateLink,index } = this.props;
     return <div>
-    <h1>{gift.wisher} : {gift.item}</h1>
+    <div>
+    <h1>{gift.wisher} : {gift.item} : {gift.image} : {gift.des} :{gift.link}</h1>
+    <button className="" onClick={this.toggleShow}>EDIT</button>
     <button className="" value={gift.id} onClick={deleteGift}>DELETE</button>
-
     </div>
+
     { this.state.show ?
         <div className="edit-form">
           <form id={gift.id} onSubmit={updateGift}>
@@ -24,15 +26,12 @@ class Gift extends React.Component{
             <input className="update-input" onKeyUp={updateImgURL} type="text" placeholder="Image URL" required/>
             <input className="update-input" onKeyUp={updateDes} type="text" placeholder="Description" required/>
             <input className="update-input" onKeyUp={updateLink} type="text" placeholder="Link" required/>
-            <input id="update-button" type="submit" value="Update Wish"/>
+            <input type="submit" value="Update Wish"/>
           </form>
         </div> : null }
+        </div>
 
   }
-
-
-
-
 
 }
 
@@ -113,6 +112,57 @@ class App extends React.Component{
         )
     }
 
+    updateGift = (event) =>{
+      event.preventDefault();
+      const id = event.target.getAttribute('id');
+      axios.put(
+        '/gifts/' + id,
+        {
+          wisher:this.state.updatedWisher,
+          item:this.state.updatedItem,
+          image:this.state.updatedImgURL,
+          des:this.state.updatedDes,
+          link:this.state.updatedLink,
+        }
+      ).then(
+        (response) => {
+            this.setState({
+                gifts:response.data
+            })
+        }
+      )
+    }
+
+    updateWisher = (event) => {
+      this.setState({
+        updatedWisher:event.target.value,
+
+      })
+    }
+    updateItem = (event) => {
+      this.setState({
+        updatedItem:event.target.value,
+
+      })
+    }
+    updateImgURL = (event) => {
+      this.setState({
+        updatedImgURL:event.target.value,
+
+      })
+    }
+    updateDes = (event) => {
+      this.setState({
+        updatedDes:event.target.value,
+
+      })
+    }
+    updateLink = (event) => {
+      this.setState({
+        updatedLink:event.target.value,
+
+      })
+    }
 
   render = () => {
     return <div> <h1>REACT APP</h1>
@@ -129,9 +179,17 @@ class App extends React.Component{
     </div>
     {
       this.state.gifts.map(
-        (gift) => {
+        (gift,index) => {
           return <Gift gift={gift}
+                       index={index}
                        deleteGift={this.deleteGift}
+                       updateGift={this.updateGift}
+                       updateWisher={this.updateWisher}
+                       updateItem={this.updateItem}
+                       updateImgURL={this.updateImgURL}
+                       updateDes={this.updateDes}
+                       updateLink={this.updateLink}
+
 
 
               ></Gift>
