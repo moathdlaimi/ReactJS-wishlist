@@ -108,6 +108,7 @@ class App extends React.Component{
       })
     }
 
+
     deleteGift = (event) => {
         axios.delete('/gifts/' + event.target.value).then(
             (response) => {
