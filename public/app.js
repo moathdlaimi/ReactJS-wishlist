@@ -13,7 +13,7 @@ class Gift extends React.Component{
     const {gift, deleteGift,updateGift, updateWisher,updateItem,updateImgURL,updateDes,updateLink,index } = this.props;
     return <div>
     <div>
-    <h1>{gift.wisher} : {gift.item} : {gift.image} : {gift.des} :{gift.link}</h1>
+    <h1>{gift.wisher}</h1><h1> : {gift.item} : {gift.image} : {gift.des} :{gift.link}</h1>
     <button className="" onClick={this.toggleShow}>EDIT</button>
     <button className="" value={gift.id} onClick={deleteGift}>DELETE</button>
     </div>
@@ -112,6 +112,17 @@ class App extends React.Component{
         )
     }
 
+
+    deleteGift = (event) => {
+        axios.delete('/gifts/' + event.target.value).then(
+            (response) => {
+              this.setState({
+                  gifts:response.data
+              })
+            }
+        )
+    }
+
     updateGift = (event) =>{
       event.preventDefault();
       const id = event.target.getAttribute('id');
@@ -165,7 +176,9 @@ class App extends React.Component{
     }
 
   render = () => {
-    return <div> <h1>REACT APP</h1>
+    return <div>
+    <nav className="nav-bar"><button className="nav-btns">WISHES</button><button className="nav-btns">MAKE A WISH</button></nav>
+    <div className="welcome"></div>
     <div>
       <form onSubmit={this.createGift}>
 
@@ -179,6 +192,7 @@ class App extends React.Component{
     </div>
     {
       this.state.gifts.map(
+
         (gift,index) => {
           return <Gift gift={gift}
                        index={index}
@@ -194,6 +208,7 @@ class App extends React.Component{
 
               ></Gift>
         })
+
     }
 
     </div>
