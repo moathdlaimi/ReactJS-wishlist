@@ -25,7 +25,7 @@ class Gift extends React.Component{
     <div className="details">
     <h2> {gift.item}</h2>
     <h2>{gift.des}</h2>
-    <h3><a href={gift.link} target="_blank">LINK</a></h3>
+    <h3><a href={gift.link} target="_blank">Find out more</a></h3>
     </div>
 
     <div className="func-btns">
@@ -43,7 +43,7 @@ class Gift extends React.Component{
             <input className="update-input" onKeyUp={updateImgURL} type="text" placeholder="Image URL" required/>
             <input className="update-input" onKeyUp={updateDes} type="text" placeholder="Description" required/>
             <input className="update-input" onKeyUp={updateLink} type="text" placeholder="Link" required/>
-            <input type="submit" value="Update Wish"/>
+            <input className="update-submit" type="submit" value="Update Wish"/>
           </form>
         </div> : null }
         </div>
@@ -202,18 +202,18 @@ class App extends React.Component{
 
   render = () => {
     return <div>
-    <nav className="nav-bar"><button className="nav-btns">WISHES</button><button onClick={this.toggleShow} className="nav-btns">MAKE A WISH</button></nav>
+    <nav className="nav-bar"><button onClick={this.toggleShow} className="nav-btns">MAKE A WISH</button></nav>
 
     { this.state.show ?
-    <div className="create-form">
-      <form onSubmit={this.createGift}>
+    <div className="create-form-div">
+      <form className="create-form" onSubmit={this.createGift}>
 
-       <input onKeyUp={this.createWisher} type="text" placeholder="name" required/><br/>
-       <input onKeyUp={this.createItem} type="text" placeholder="Gift" required/><br/>
-       <input onKeyUp={this.createImgURL} type="text" placeholder="ImageURL" required/><br/>
-       <input onKeyUp={this.createDes} type="text" placeholder="Description" required/><br/>
-       <input onKeyUp={this.createLink} type="text" placeholder="Link" required/><br/>
-       <input type="submit" value="Make a Wish"/>
+       <input className="create-input" onKeyUp={this.createWisher} type="text" placeholder="Name" required/><br/>
+       <input className="create-input" onKeyUp={this.createItem} type="text" placeholder="Gift" required/><br/>
+       <input className="create-input"onKeyUp={this.createImgURL} type="text" placeholder="ImageURL" required/><br/>
+       <input className="create-input" onKeyUp={this.createDes} type="text" placeholder="Description" required/><br/>
+       <input className="create-input" onKeyUp={this.createLink} type="text" placeholder="Link" required/><br/>
+       <input className="create-submit" type="submit" value="Make a Wish"/>
       </form>
     </div> : null}
 

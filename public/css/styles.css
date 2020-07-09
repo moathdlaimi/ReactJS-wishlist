@@ -11,6 +11,14 @@ html{
   text-align: center;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: #DAA520;
+}
+
 .nav-bar{
   display: flex;
   justify-content:center;
@@ -52,10 +60,28 @@ html{
 
 .container{
   text-align: center;
-  margin: 0 auto;
+  margin: 25px auto;
 }
-.create-form{
+.create-form-div{
   padding-top: 30vh;
+}
+.create-form {
+
+}
+.create-input{
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+}
+.create-submit{
+  padding: 7px;
+  background-color: white;
+  border-radius: 5px;
+  background-color: black;
+  color: #DAA520;
+
 }
 
 .show-page{
@@ -110,5 +136,28 @@ html{
 }
 
 #wisher-name{
+  color: #DAA520;
+}
+
+
+/* ========== */
+/* UPDATE FORM */
+.edit-form{
+
+}
+
+.update-input{
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+}
+
+.update-submit{
+  padding: 7px;
+  background-color: white;
+  border-radius: 5px;
+  background-color: black;
   color: #DAA520;
 }
