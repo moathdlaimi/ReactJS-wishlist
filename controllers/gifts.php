@@ -17,7 +17,7 @@ if($_REQUEST['action'] === 'index') {
 elseif ($_REQUEST['action'] === 'update') {
   $request_body = file_get_contents('php://input');
   $body_object = json_decode($request_body);
-  $updated_gift = new Gift($_REQUEST['id'] ,$body_object->wisher,$body_object->item,$body_object->image,$body_object->des,$body_object->link);
+  $updated_gift = new Gift($_REQUEST['id'], $body_object->wisher, $body_object->item ,$body_object->image ,$body_object->des, $body_object->link);
   $all_gifts = Gifts::update($updated_gift);
   echo json_encode($all_gifts);
 
