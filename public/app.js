@@ -102,6 +102,7 @@ class App extends React.Component{
       })
     }
 
+
     deleteGift = (event) => {
         axios.delete('/gifts/' + event.target.value).then(
             (response) => {
@@ -179,6 +180,7 @@ class App extends React.Component{
     </div>
     {
       this.state.gifts.map(
+
         (gift,index) => {
           return <Gift gift={gift}
                        index={index}
@@ -194,6 +196,7 @@ class App extends React.Component{
 
               ></Gift>
         })
+
     }
 
     </div>
