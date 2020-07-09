@@ -161,3 +161,36 @@ a:hover{
   background-color: black;
   color: #DAA520;
 }
+
+
+
+@media only screen and (max-width: 805px) {
+
+  .show-page{
+    padding-top: 20vh;
+    width: 60%;
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-template-rows: 50px auto 25px auto ;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .details{
+    margin-top: 25px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+
+  .gift-img:hover{
+    transform: scale(1.1);
+    transition: ease 1s;
+  }
+
+  .btns{
+
+    width: 50%;
+  }
+
+}
