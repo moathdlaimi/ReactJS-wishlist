@@ -3,6 +3,8 @@ class Gift extends React.Component{
       show:false
     }
 
+
+
   toggleShow = () => {
       this.setState({
           show:!this.state.show
@@ -11,11 +13,26 @@ class Gift extends React.Component{
 
   render = () => {
     const {gift, deleteGift,updateGift, updateWisher,updateItem,updateImgURL,updateDes,updateLink,index } = this.props;
-    return <div>
+    return <div className="container">
+
+    <div className="show-page">
+
+    <h2 id="wisher-name">{gift.wisher} wishes for</h2>
     <div>
-    <h1>{gift.wisher} : {gift.item} : {gift.image} : {gift.des} :{gift.link}</h1>
-    <button className="" onClick={this.toggleShow}>EDIT</button>
-    <button className="" value={gift.id} onClick={deleteGift}>DELETE</button>
+    <img className="gift-img" src={gift.image} alt=""/>
+    </div>
+
+    <div className="details">
+    <h2> {gift.item}</h2>
+    <h2>{gift.des}</h2>
+    <h3><a href={gift.link} target="_blank">Find out more</a></h3>
+    </div>
+
+    <div className="func-btns">
+    <button className="btns" onClick={this.toggleShow}>EDIT</button>
+    <button className="btns" value={gift.id} onClick={deleteGift}>DELETE</button>
+    </div>
+
     </div>
 
     { this.state.show ?
@@ -26,7 +43,7 @@ class Gift extends React.Component{
             <input className="update-input" onKeyUp={updateImgURL} type="text" placeholder="Image URL" required/>
             <input className="update-input" onKeyUp={updateDes} type="text" placeholder="Description" required/>
             <input className="update-input" onKeyUp={updateLink} type="text" placeholder="Link" required/>
-            <input type="submit" value="Update Wish"/>
+            <input className="update-submit" type="submit" value="Update Wish"/>
           </form>
         </div> : null }
         </div>
@@ -37,7 +54,14 @@ class Gift extends React.Component{
 
 class App extends React.Component{
     state = {
-      gifts:[]
+      gifts:[],
+      show:false
+    }
+
+    toggleShow = () => {
+        this.setState({
+            show:!this.state.show
+        })
     }
 
     componentDidMount = () => {
@@ -113,6 +137,17 @@ class App extends React.Component{
         )
     }
 
+
+    deleteGift = (event) => {
+        axios.delete('/gifts/' + event.target.value).then(
+            (response) => {
+              this.setState({
+                  gifts:response.data
+              })
+            }
+        )
+    }
+
     updateGift = (event) =>{
       event.preventDefault();
       const id = event.target.getAttribute('id');
@@ -166,23 +201,27 @@ class App extends React.Component{
     }
 
   render = () => {
-    return <div> <h1>REACT APP</h1>
-    <div>
-      <form onSubmit={this.createGift}>
+    return <div>
+    <nav className="nav-bar"><button onClick={this.toggleShow} className="nav-btns">MAKE A WISH</button></nav>
 
-       <input onKeyUp={this.createWisher} type="text" placeholder="name" required/><br/>
-       <input onKeyUp={this.createItem} type="text" placeholder="Gift" required/><br/>
-       <input onKeyUp={this.createImgURL} type="text" placeholder="ImageURL" required/><br/>
-       <input onKeyUp={this.createDes} type="text" placeholder="Description" required/><br/>
-       <input onKeyUp={this.createLink} type="text" placeholder="Link" required/><br/>
-       <input type="submit" value="Make a Wish"/>
+    { this.state.show ?
+    <div className="create-form-div">
+      <form className="create-form" onSubmit={this.createGift}>
+
+       <input className="create-input" onKeyUp={this.createWisher} type="text" placeholder="Name" required/><br/>
+       <input className="create-input" onKeyUp={this.createItem} type="text" placeholder="Gift" required/><br/>
+       <input className="create-input"onKeyUp={this.createImgURL} type="text" placeholder="ImageURL" required/><br/>
+       <input className="create-input" onKeyUp={this.createDes} type="text" placeholder="Description" required/><br/>
+       <input className="create-input" onKeyUp={this.createLink} type="text" placeholder="Link" required/><br/>
+       <input className="create-submit" type="submit" value="Make a Wish"/>
       </form>
-    </div>
+    </div> : null}
+
     {
       this.state.gifts.map(
 
         (gift,index) => {
-          return <Gift gift={gift}
+          return  <Gift gift={gift}
                        index={index}
                        deleteGift={this.deleteGift}
                        updateGift={this.updateGift}
