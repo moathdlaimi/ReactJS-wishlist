@@ -3,6 +3,8 @@ class Gift extends React.Component{
       show:false
     }
 
+
+
   toggleShow = () => {
       this.setState({
           show:!this.state.show
@@ -38,6 +40,10 @@ class Gift extends React.Component{
 class App extends React.Component{
     state = {
       gifts:[]
+    }
+
+    scrollToTop = () => {
+        scroll.scrollToTop()
     }
 
     componentDidMount = () => {

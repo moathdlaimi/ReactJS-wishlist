@@ -45,7 +45,7 @@ html{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('/imgs/bg2.jpg');
+  background-image: url('bg1.jpg');
   background: #bfcbb8;
   color: white;
 }
